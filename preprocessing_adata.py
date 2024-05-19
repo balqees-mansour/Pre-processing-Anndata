@@ -31,8 +31,8 @@ sc.pp.calculate_qc_metrics(anndata, qc_vars=['mt'], percent_top=None, log1p=Fals
 sc.pl.violin(anndata, ['n_genes_by_counts', 'total_counts', 'pct_counts_mt'],
              jitter=0.4, multi_panel=True)
 
-anndata = anndata[anndata.obs.n_genes_by_counts < 2500, :]
-anndata = anndata[anndata.obs.pct_counts_mt < 5, :]
+anndata = anndata[anndata.obs.n_genes_by_counts > 2500, :]
+anndata = anndata[anndata.obs.pct_counts_mt > 5, :]
 
 sc.pp.normalize_total(anndata, target_sum=1e4)
 
